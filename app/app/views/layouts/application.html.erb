@@ -20,10 +20,10 @@
 
   <body>
   <% if user_signed_in? %>
-  <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, 
+  <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, 
               data: { confirm: "Voulez-vous vraiment vous déconnecter ?" }, 
-              class: "btn btn-danger btn-lg" %>
-  <% end %>
+              class: "btn btn-danger" %>
+<% end %>
     <% if flash[:notice] %>
       <div class="container mx-auto p-6>
         <div role="alert">
