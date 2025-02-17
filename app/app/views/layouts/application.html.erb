@@ -20,7 +20,7 @@
 
   <body>
   <% if user_signed_in? %>
-  <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, 
+  <%= button_to "log out", destroy_user_session_path, method: :delete, 
               data: { confirm: "Voulez-vous vraiment vous déconnecter ?" }, 
               class: "btn btn-danger" %>
 <% end %>

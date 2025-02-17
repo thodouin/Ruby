@@ -18,6 +18,11 @@
     </div>
 
     <div class="mb-4">
+        <%= form.label :step %>
+        <%= form.number_field :step, step: "1", placeholder: "Entrez le nombre de pas" %>
+    </div>
+
+    <div class="mb-4">
         <%= form.label :date, "Date" %>
         <%= form.date_field :date %>
     </div>

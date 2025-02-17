@@ -1,7 +1,10 @@
 <%# app/views/weight_entries/index.html.erb %>
 <div class="container mx-auto p-6">
   <h1 class="text-4xl font-bold text-center text-blue-600 mb-6">Trackeuse de Poids</h1>
-  <%= line_chart @weight_entries.group(:date).sum(:weight) %>
+  <%= line_chart [
+  { name: "Poids", data: @weight_entries.group(:date).sum(:weight) },
+  { name: "Nombre de pas", data: @weight_entries.group(:date).sum(:step) }
+] %>
   <div class="flex justify-end mb-4">
     <%= link_to "Ajouter une nouvelle entrée", new_weight_entry_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
   </div>
@@ -11,6 +14,7 @@
         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
           <th class="py-3 px-6 text-left">Date</th>
           <th class="py-3 px-6 text-left">Poids (kg)</th>
+          <th class="py-3 px-6 text-left">Nombre de pas</th>
           <th class="py-3 px-6 text-center">Actions</th>
         </tr>
       </thead>
@@ -19,6 +23,7 @@
           <tr class="border-b border-gray-200 hover:bg-gray-100">
             <td class="py-3 px-6 text-left"><%= entry.date %></td>
             <td class="py-3 px-6 text-left"><%= entry.weight %></td>
+            <td class="py-3 px-6 text-left"><%= entry.step %></td>
             <td class="py-3 px-6 text-center flex justify-center">
               <%= link_to "Voir", weight_entry_path(entry), class: "text-blue-500 hover:underline" %> |
               <%= link_to "Modifier", edit_weight_entry_path(entry), class: "text-green-500 hover:underline" %> |

@@ -46,6 +46,6 @@ class WeightEntriesController < ApplicationController
     @weight_entry = WeightEntry.find(params[:id])
   end
   def weight_entry_params
-    params.require(:weight_entry).permit(:weight, :date)
+    params.require(:weight_entry).permit(:weight, :date, :step)
   end
 end
